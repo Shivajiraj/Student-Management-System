@@ -37,9 +37,7 @@ public class StudentMain extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		//doGet(request, response);
-		
+
 		response.setContentType("text/html");
 		
 		PrintWriter out = response.getWriter();
@@ -54,7 +52,7 @@ public class StudentMain extends HttpServlet {
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/student_management_system","root","934600");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/student_management_system","root","password");
 			
 			PreparedStatement ps = con.prepareStatement(
 
