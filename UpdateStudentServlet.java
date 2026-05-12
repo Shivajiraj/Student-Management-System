@@ -49,11 +49,11 @@ public class UpdateStudentServlet extends HttpServlet {
 
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            Connection con =
-            DriverManager.getConnection(
-            "jdbc:mysql://localhost:3306/student_management_system",
-            "root",
-            "934600");
+           Connection con = DriverManager.getConnection(
+            	    "jdbc:mysql://trolley.proxy.rlwy.net:20416/railway?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC",
+            	    "root",
+            	    "roasjGBKmitUikschrYkKXEvRavKOTsH"
+            	);
 
             // UPDATE BASIC DETAILS
 
