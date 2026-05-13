@@ -1,179 +1,555 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<title>Academic Details</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Academic Dashboard</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
 <style>
-*{ margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
-body{ background:#eff6ff; padding:40px; }
-.container{ width:90%; max-width:850px; margin:auto; background:white; padding:40px; border-radius:20px; box-shadow:0 8px 25px rgba(0,0,0,0.1); }
-.top-bar{ display:flex; justify-content:space-between; align-items:center; margin-bottom:30px; }
-h1{ color:#1d4ed8; }
-.nav-home{ text-decoration:none; color:#2563eb; font-weight:600; font-size:14px; }
-.nav-home:hover{ text-decoration:underline; }
 
-.form-grid{ display:grid; grid-template-columns:1fr 1fr; gap:25px; }
-.form-group{ display:flex; flex-direction:column; }
-label{ margin-bottom:8px; font-weight:600; color:#1e293b; }
-input, select{ padding:14px; border-radius:10px; border:1px solid #cbd5e1; font-size:15px; transition:0.2s; }
-input:focus, select:focus{ outline:none; border-color:#2563eb; box-shadow:0 0 8px rgba(37,99,235,0.3); }
-input.error-field, select.error-field{ border-color:#ef4444; }
-.field-error{ color:#ef4444; font-size:12px; margin-top:5px; display:none; }
-.field-error.show{ display:block; }
-
-.buttons{ margin-top:30px; display:flex; gap:20px; }
-button{ padding:14px 28px; border:none; border-radius:10px; font-size:16px; font-weight:600; cursor:pointer; transition:0.3s; }
-.submit-btn{ background:#2563eb; color:white; }
-.submit-btn:hover{ background:#1e40af; }
-.home-btn{ background:#e2e8f0; color:#1e293b; }
-.home-btn:hover{ background:#cbd5e1; }
-
-.toast{ position:fixed; bottom:30px; right:30px; padding:16px 24px; border-radius:12px; font-weight:600; font-size:15px; z-index:999; display:none; }
-.toast.show{ display:block; animation:slideIn 0.4s ease; }
-.toast.success{ background:#22c55e; color:white; }
-.toast.error{ background:#ef4444; color:white; }
-@keyframes slideIn{ from{ transform:translateX(100px); opacity:0; } to{ transform:translateX(0); opacity:1; } }
-
-@media(max-width:700px){
-.form-grid{ grid-template-columns:1fr; }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
+
+:root{
+
+    --bg-dark:#070b1d;
+    --bg-card:rgba(17,25,40,0.75);
+
+    --purple:#a855f7;
+    --cyan:#06b6d4;
+    --gold:#f59e0b;
+
+    --text:#f8fafc;
+    --muted:#94a3b8;
+}
+
+select option{
+
+    background:#111827;
+
+    color:white;
+}
+
+body{
+
+    display:flex;
+
+    min-height:100vh;
+
+    background:
+    linear-gradient(
+    135deg,
+    #050816,
+    #111827);
+
+    font-family:'Poppins',sans-serif;
+
+    color:white;
+}
+
+input,
+select,
+textarea{
+
+    padding:16px;
+
+    border-radius:14px;
+
+    border:1px solid rgba(255,255,255,0.1);
+
+    background:rgba(255,255,255,0.05);
+
+    color:white;
+
+    font-size:15px;
+
+    transition:0.3s;
+}
+
+select option{
+
+    background:#111827;
+
+    color:white;
+}
+/* ================= SIDEBAR ================= */
+
+.sidebar{
+
+    width:260px;
+
+    background:
+    rgba(10,14,39,0.95);
+
+    border-right:
+    1px solid rgba(255,255,255,0.08);
+
+    padding:40px 20px;
+
+    position:fixed;
+
+    height:100vh;
+}
+
+.logo{
+
+    font-size:32px;
+
+    font-weight:700;
+
+    margin-bottom:60px;
+
+    font-family:'Space Grotesk',sans-serif;
+}
+
+.logo span{
+
+    color:var(--purple);
+}
+
+.menu{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+}
+
+.menu a{
+
+    text-decoration:none;
+
+    color:#cbd5e1;
+
+    padding:16px;
+
+    border-radius:14px;
+
+    transition:0.3s;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+}
+
+.menu a:hover{
+
+    background:
+    rgba(168,85,247,0.15);
+
+    color:white;
+
+    transform:translateX(5px);
+}
+
+.menu i{
+
+    color:var(--purple);
+}
+
+/* ================= MAIN ================= */
+
+.main{
+
+    margin-left:260px;
+
+    width:100%;
+
+    padding:50px;
+}
+
+.topbar{
+
+    margin-bottom:40px;
+}
+
+.topbar h1{
+
+    font-size:45px;
+
+    font-family:'Space Grotesk',sans-serif;
+
+    background:
+    linear-gradient(
+    135deg,
+    var(--gold),
+    var(--purple));
+
+    -webkit-background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+}
+
+/* ================= FORM CONTAINER ================= */
+
+.form-container{
+
+    background:var(--bg-card);
+
+    border:
+    1px solid rgba(168,85,247,0.15);
+
+    border-radius:24px;
+
+    padding:40px;
+
+    backdrop-filter:blur(12px);
+}
+
+/* ================= GRID ================= */
+
+.form-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(300px,1fr));
+
+    gap:30px;
+}
+
+/* ================= INPUTS ================= */
+
+.form-group{
+
+    display:flex;
+
+    flex-direction:column;
+}
+
+.form-group label{
+
+    margin-bottom:12px;
+
+    color:#dbeafe;
+
+    font-weight:500;
+}
+
+.form-group input,
+.form-group select{
+
+    padding:16px;
+
+    border-radius:16px;
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    background:
+    rgba(255,255,255,0.04);
+
+    color:white;
+
+    font-size:15px;
+
+    transition:0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus{
+
+    outline:none;
+
+    border-color:var(--purple);
+
+    box-shadow:
+    0 0 20px rgba(168,85,247,0.25);
+}
+
+/* ================= BUTTONS ================= */
+
+.buttons{
+
+    margin-top:40px;
+
+    display:flex;
+
+    gap:20px;
+}
+
+.submit-btn{
+
+    padding:16px 35px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:
+    linear-gradient(
+    135deg,
+    var(--purple),
+    var(--cyan));
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.submit-btn:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+    0 15px 25px rgba(168,85,247,0.25);
+}
+
+.back-btn{
+
+    padding:16px 35px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:
+    rgba(255,255,255,0.08);
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.back-btn:hover{
+
+    background:
+    rgba(255,255,255,0.15);
+}
+
 </style>
+
 </head>
+
 <body>
 
-<div class="container">
-    <div class="top-bar">
-        <h1>Academic Details</h1>
-        <a href="adminHome.html" class="nav-home">← Back to Home</a>
+<!-- ================= SIDEBAR ================= -->
+
+<div class="sidebar">
+
+    <div class="logo">
+
+        Admin<span>Panel</span>
+
     </div>
 
-    <form id="academicForm" action="AcademicMain" method="post" novalidate>
-        <div class="form-grid">
+    <div class="menu">
 
-            <div class="form-group">
-                <label>Student ID</label>
-                <input type="text" name="student_id" id="student_id" placeholder="e.g. STU001">
-                <span class="field-error" id="err_student_id">Student ID is required.</span>
-            </div>
+        <a href="adminHome.html">
 
-            <div class="form-group">
-                <label>Branch</label>
-                <select name="branch" id="branch">
-                    <option value="">-- Select Branch --</option>
-                    <option>Computer Science</option>
-                    <option>Information Technology</option>
-                    <option>Electronics & Communication</option>
-                    <option>Electrical Engineering</option>
-                    <option>Mechanical Engineering</option>
-                    <option>Civil Engineering</option>
-                </select>
-                <span class="field-error" id="err_branch">Please select a branch.</span>
-            </div>
+            <i class="fa-solid fa-house"></i>
 
-            <div class="form-group">
-                <label>Year</label>
-                <select name="year" id="year">
-                    <option value="">-- Select Year --</option>
-                    <option>1st Year</option>
-                    <option>2nd Year</option>
-                    <option>3rd Year</option>
-                    <option>4th Year</option>
-                </select>
-                <span class="field-error" id="err_year">Please select a year.</span>
-            </div>
+            Dashboard
 
-            <div class="form-group">
-                <label>Section</label>
-                <select name="section" id="section">
-                    <option value="">-- Select Section --</option>
-                    <option>A</option>
-                    <option>B</option>
-                    <option>C</option>
-                    <option>D</option>
-                </select>
-                <span class="field-error" id="err_section">Please select a section.</span>
-            </div>
+        </a>
 
-            <div class="form-group">
-                <label>CGPA</label>
-                <input type="number" name="cgpa" id="cgpa" step="0.01" min="0" max="10" placeholder="0.00 – 10.00">
-                <span class="field-error" id="err_cgpa">Enter a valid CGPA (0–10).</span>
-            </div>
+        <a href="basic.html">
 
-            <div class="form-group">
-                <label>Admission Year</label>
-                <input type="number" name="admission_year" id="admission_year" placeholder="e.g. 2022" min="2000" max="2100">
-                <span class="field-error" id="err_admission_year">Enter a valid admission year.</span>
-            </div>
+            <i class="fa-solid fa-user-plus"></i>
 
-            <div class="form-group">
-                <label>Roll Number</label>
-                <input type="text" name="roll_number" id="roll_number" placeholder="e.g. 22CS001">
-                <span class="field-error" id="err_roll_number">Roll number is required.</span>
-            </div>
+            Add Student
 
-            <div class="form-group">
-                <label>Attendance (%)</label>
-                <input type="number" name="attendance" id="attendance" step="0.1" min="0" max="100" placeholder="0 – 100">
-                <span class="field-error" id="err_attendance">Enter a valid attendance percentage.</span>
-            </div>
+        </a>
 
-        </div>
+        <a href="ViewStudents">
 
-        <div class="buttons">
-            <button type="submit" class="submit-btn">Save Academic Details</button>
-            <button type="button" class="home-btn" onclick="window.location.href='adminHome.html'">Back To Home</button>
-        </div>
-    </form>
+            <i class="fa-solid fa-users"></i>
+
+            View Students
+
+        </a>
+
+        <a href="analytics.html">
+
+            <i class="fa-solid fa-chart-line"></i>
+
+            Analytics
+
+        </a>
+
+        <a href="LogoutServlet">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            Logout
+
+        </a>
+
+    </div>
+
 </div>
 
-<div class="toast" id="toast"></div>
+<!-- ================= MAIN ================= -->
 
-<script>
-const params = new URLSearchParams(window.location.search);
-const status = params.get('status');
-const toast = document.getElementById('toast');
-function showToast(msg, type){
-    toast.textContent = msg;
-    toast.className = 'toast show ' + type;
-    setTimeout(() => { toast.className = 'toast'; }, 4000);
-}
-if(status === 'success') showToast('✅ Academic details saved!', 'success');
-if(status === 'error') showToast('❌ Something went wrong. Please try again.', 'error');
+<div class="main">
 
-document.getElementById('academicForm').addEventListener('submit', function(e){
-    let valid = true;
+    <div class="topbar">
 
-    function validate(id, errId, condition){
-        const el = document.getElementById(id);
-        const err = document.getElementById(errId);
-        if(condition){ el.classList.add('error-field'); err.classList.add('show'); valid = false; }
-        else { el.classList.remove('error-field'); err.classList.remove('show'); }
-    }
+        <h1>📘 Academic Dashboard</h1>
 
-    const sid = document.getElementById('student_id').value.trim();
-    const branch = document.getElementById('branch').value;
-    const year = document.getElementById('year').value;
-    const section = document.getElementById('section').value;
-    const cgpa = parseFloat(document.getElementById('cgpa').value);
-    const admYear = parseInt(document.getElementById('admission_year').value);
-    const roll = document.getElementById('roll_number').value.trim();
-    const att = parseFloat(document.getElementById('attendance').value);
+    </div>
 
-    validate('student_id','err_student_id', sid === '');
-    validate('branch','err_branch', branch === '');
-    validate('year','err_year', year === '');
-    validate('section','err_section', section === '');
-    validate('cgpa','err_cgpa', isNaN(cgpa) || cgpa < 0 || cgpa > 10);
-    validate('admission_year','err_admission_year', isNaN(admYear) || admYear < 2000 || admYear > 2100);
-    validate('roll_number','err_roll_number', roll === '');
-    validate('attendance','err_attendance', isNaN(att) || att < 0 || att > 100);
+    <div class="form-container">
 
-    if(!valid){ e.preventDefault(); showToast('⚠️ Please fix the errors before submitting.', 'error'); }
-});
-</script>
+        <form action="AcademicMain"
+        method="post">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label>Student ID</label>
+
+                    <input type="text"
+                    name="student_id"
+                    placeholder="Enter Student ID">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Branch</label>
+
+                    <select name="branch">
+
+                        <option>Computer Science</option>
+
+                        <option>Information Technology</option>
+
+                        <option>Electronics</option>
+
+                        <option>Mechanical</option>
+
+                        <option>Civil</option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Year Of Study</label>
+
+                    <select name="year_of_study">
+
+                        <option>1st Year</option>
+
+                        <option>2nd Year</option>
+
+                        <option>3rd Year</option>
+
+                        <option>4th Year</option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Section</label>
+
+                    <select name="section">
+
+                        <option>A</option>
+
+                        <option>B</option>
+
+                        <option>C</option>
+
+                        <option>D</option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>CGPA</label>
+
+                    <input type="number"
+                    step="0.01"
+                    name="cgpa"
+                    placeholder="Enter CGPA">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Attendance</label>
+
+                    <input type="number"
+                    name="attendance"
+                    placeholder="Attendance %">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Roll Number</label>
+
+                    <input type="text"
+                    name="roll_number"
+                    placeholder="Enter Roll Number">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Admission Year</label>
+
+                    <input type="number"
+                    name="admission_year"
+                    placeholder="Enter Admission Year">
+
+                </div>
+
+            </div>
+
+            <div class="buttons">
+
+                <button type="submit"
+                class="submit-btn">
+
+                    Save Academic Details
+
+                </button>
+
+                <button type="button"
+                class="back-btn"
+                onclick="window.location.href='adminHome.html'">
+
+                    Back To Home
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
 </body>
 </html>
