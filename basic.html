@@ -1,12 +1,18 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Basic Details</title>
+<html lang="en">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Basic Student Details</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
 <style>
 
@@ -14,105 +20,287 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Poppins', sans-serif;
 }
 
+:root{
+
+    --bg-dark:#0a0e27;
+    --bg-darker:#050810;
+    --bg-card:rgba(20,28,52,0.6);
+
+    --border-color:rgba(168,85,247,0.2);
+
+    --accent-gold:#d4af37;
+    --accent-purple:#a855f7;
+    --accent-cyan:#06b6d4;
+
+    --text-primary:#f0f4f8;
+    --text-secondary:#b0bcc4;
+}
+
+select option{
+
+    background:#111827;
+
+    color:white;
+}
+
+input,
+select,
+textarea{
+
+    padding:16px;
+
+    border-radius:14px;
+
+    border:1px solid rgba(255,255,255,0.1);
+
+    background:rgba(255,255,255,0.05);
+
+    color:white;
+
+    font-size:15px;
+
+    transition:0.3s;
+}
+
+select option{
+
+    background:#111827;
+
+    color:white;
+}
 body{
-    background:#eef4ff;
+
+    background:linear-gradient(
+    135deg,
+    var(--bg-darker) 0%,
+    #1a1f3a 100%);
+
+    min-height:100vh;
+
+    font-family:'Poppins',sans-serif;
+
+    color:white;
+
     padding:40px;
 }
 
 .container{
-    width:90%;
-    max-width:900px;
+
+    width:95%;
+
+    max-width:1200px;
+
     margin:auto;
-    background:white;
-    border-radius:20px;
-    padding:40px;
-    box-shadow:0px 8px 30px rgba(0,0,0,0.1);
+
+    background:rgba(20,28,52,0.7);
+
+    border:1px solid var(--border-color);
+
+    backdrop-filter:blur(12px);
+
+    border-radius:25px;
+
+    padding:45px;
 }
 
-h1{
-    color:#1e3a8a;
-    margin-bottom:30px;
+.topbar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:40px;
+}
+
+.topbar h1{
+
+    font-size:38px;
+
+    font-family:'Space Grotesk',sans-serif;
+
+    background:linear-gradient(
+    135deg,
+    var(--accent-gold),
+    var(--accent-purple));
+
+    -webkit-background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+}
+
+.back-btn{
+
+    padding:12px 24px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:linear-gradient(
+    135deg,
+    var(--accent-purple),
+    var(--accent-cyan));
+
+    color:white;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.back-btn:hover{
+
+    transform:translateY(-3px);
 }
 
 .form-grid{
+
     display:grid;
+
     grid-template-columns:1fr 1fr;
-    gap:25px;
+
+    gap:28px;
 }
 
 .form-group{
+
     display:flex;
+
     flex-direction:column;
 }
 
 .form-group.full{
+
     grid-column:1/3;
 }
 
 label{
-    margin-bottom:8px;
-    font-weight:600;
-    color:#1e293b;
+
+    margin-bottom:10px;
+
+    color:#dbeafe;
+
+    font-weight:500;
 }
 
-input, select, textarea{
-    padding:14px;
-    border:1px solid #cbd5e1;
-    border-radius:10px;
+input,
+select,
+textarea{
+
+    padding:16px;
+
+    border-radius:14px;
+
+    border:1px solid rgba(255,255,255,0.1);
+
+    background:rgba(255,255,255,0.05);
+
+    color:white;
+
     font-size:15px;
-}
 
-input:focus, textarea:focus, select:focus{
-    outline:none;
-    border-color:#2563eb;
-    box-shadow:0px 0px 8px rgba(37,99,235,0.3);
-}
-
-.buttons{
-    margin-top:30px;
-    display:flex;
-    gap:20px;
-}
-
-button{
-    padding:14px 28px;
-    border:none;
-    border-radius:10px;
-    font-size:16px;
-    font-weight:600;
-    cursor:pointer;
     transition:0.3s;
 }
 
+input:focus,
+select:focus,
+textarea:focus{
+
+    outline:none;
+
+    border-color:var(--accent-purple);
+
+    box-shadow:0 0 15px rgba(168,85,247,0.3);
+}
+
+textarea{
+
+    resize:none;
+}
+
+.buttons{
+
+    margin-top:35px;
+
+    display:flex;
+
+    gap:20px;
+}
+
 .submit-btn{
-    background:#2563eb;
+
+    padding:15px 35px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:linear-gradient(
+    135deg,
+    var(--accent-purple),
+    var(--accent-cyan));
+
     color:white;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:0.3s;
 }
 
 .submit-btn:hover{
-    background:#1e40af;
+
+    transform:translateY(-4px);
+
+    box-shadow:0 10px 20px rgba(168,85,247,0.25);
 }
 
 .home-btn{
-    background:#e2e8f0;
+
+    padding:15px 35px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:rgba(255,255,255,0.08);
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:0.3s;
 }
 
 .home-btn:hover{
-    background:#cbd5e1;
+
+    background:rgba(255,255,255,0.15);
 }
 
-@media(max-width:700px){
+@media(max-width:900px){
 
-.form-grid{
-    grid-template-columns:1fr;
-}
+    .form-grid{
 
-.form-group.full{
-    grid-column:1/2;
-}
+        grid-template-columns:1fr;
+    }
+
+    .form-group.full{
+
+        grid-column:1/2;
+    }
 
 }
 
@@ -124,60 +312,117 @@ button{
 
 <div class="container">
 
-    <h1>Basic Student Details</h1>
+    <div class="topbar">
+
+        <h1>✨ Basic Student Details</h1>
+
+        <button class="back-btn"
+        onclick="window.location.href='adminHome.html'">
+
+            Dashboard
+
+        </button>
+
+    </div>
 
     <form action="StudentMain" method="post">
 
         <div class="form-grid">
 
             <div class="form-group">
+
                 <label>Student ID</label>
-                <input type="text" name="student_id" required>
+
+                <input type="text"
+                name="student_id"
+                placeholder="Enter Student ID"
+                required>
+
             </div>
 
             <div class="form-group">
+
                 <label>Full Name</label>
-                <input type="text" name="full_name" required>
+
+                <input type="text"
+                name="full_name"
+                placeholder="Enter Full Name"
+                required>
+
             </div>
 
             <div class="form-group">
+
                 <label>Date of Birth</label>
-                <input type="date" name="dob">
+
+                <input type="date"
+                name="dob">
+
             </div>
 
             <div class="form-group">
+
                 <label>Email</label>
-                <input type="email" name="email">
+
+                <input type="email"
+                name="email"
+                placeholder="Enter Email">
+
             </div>
 
             <div class="form-group">
+
                 <label>Phone Number</label>
-                <input type="text" name="phone">
+
+                <input type="text"
+                name="phone"
+                placeholder="Enter Phone Number">
+
             </div>
 
             <div class="form-group">
+
                 <label>Gender</label>
 
                 <select name="gender">
+
                     <option>Male</option>
+
                     <option>Female</option>
+
                     <option>Other</option>
+
                 </select>
+
             </div>
 
             <div class="form-group full">
+
                 <label>Address</label>
-                <textarea rows="5" name="address"></textarea>
+
+                <textarea rows="5"
+                name="address"
+                placeholder="Enter Address"></textarea>
+
             </div>
 
         </div>
 
         <div class="buttons">
 
-            <button type="submit" class="submit-btn">Save Details</button>
+            <button type="submit"
+            class="submit-btn">
 
-            <button type="button" class="home-btn" onclick="window.location.href='adminHome.html'">
+                Save Details
+
+            </button>
+
+            <button type="button"
+            class="home-btn"
+            onclick="window.location.href='adminHome.html'">
+
                 Back To Home
+
             </button>
 
         </div>
